@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+// Задание 1
+Console.WriteLine("Задание 1");
 Console.WriteLine("Введите число A:");
 int numberUserA = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите число B:");
@@ -19,3 +20,14 @@ else
     numbermax = numberUserB;
     Console.WriteLine($"Максимальное число: {numbermax}; Минимальное число: {numbermin}");
 };
+
+//Задание 2
+Console.WriteLine("Задание 2 ");
+Console.WriteLine("Введите число до которого нужно просчитать ");
+int numberUser = Convert.ToInt32(Console.ReadLine());
+int numberCounter = 1;
+while (numberCounter <= numberUser)
+{
+    Console.Write($"{numberCounter} ");
+    numberCounter++;
+}
