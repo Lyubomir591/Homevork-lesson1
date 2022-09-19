@@ -21,13 +21,17 @@ else
     Console.WriteLine($"Максимальное число: {numbermax}; Минимальное число: {numbermin}");
 };
 
-//Задание 2
+//Задание 4
 Console.WriteLine("Задание 2 ");
 Console.WriteLine("Введите число до которого нужно просчитать ");
 int numberUser = Convert.ToInt32(Console.ReadLine());
-int numberCounter = 1;
+Console.WriteLine("Введите чило старт")
+int numberCounter = Convert.ToInt32(Console.ReadLine()) ;
 while (numberCounter <= numberUser)
 {
-    Console.Write($"{numberCounter} ");
+    if(numberCounter % 2 == 0){
+        Console.Write($"{numberCounter} ");
+    }
+   
     numberCounter++;
 }
