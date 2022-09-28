@@ -152,3 +152,35 @@ void Cub(int num)
     }
 }
 Cub(min);
+// Задание 2 
+//Напишите метод, который принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+
+double[][] Dablarr()
+{
+    double[][] mix = new double[2][];
+    mix[0] = new double[3];
+    mix[1] = new double[3];
+    int length = mix[0].Length;
+    for (int i = 0; i < length; i++)
+    {
+        Console.WriteLine("Введите координаты точки А");
+        mix[0][i] = Convert.ToInt32(Console.ReadLine());
+    }
+    for (int i = 0; i < length; i++)
+    {
+        Console.WriteLine("Введите координаты точки В");
+        mix[1][i] = Convert.ToInt32(Console.ReadLine());
+    }
+    return mix;
+};
+
+double[][] arrT = Dablarr();
+
+
+void Function(double[][] arr)
+{
+    double sum = Math.Sqrt(Math.Pow(arr[1][0] - arr[0][0], 2) + Math.Pow(arr[1][1] - arr[0][1], 2) + Math.Pow(arr[1][2] - arr[0][2], 2));
+
+    Console.WriteLine(sum.ToString("F" + 2));
+}
+Function(arrT);
