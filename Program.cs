@@ -115,72 +115,176 @@
 //Урок 3 
 //Задание №1
 
-Console.WriteLine("Введите полиндром :");
-int numberPOlendrom = Convert.ToInt32(Console.ReadLine());
-void Revers(int number)
+// Console.WriteLine("Введите полиндром :");
+// int numberPOlendrom = Convert.ToInt32(Console.ReadLine());
+// void Revers(int number)
+// {
+//     int copyNumber = number;
+//     int result = 0;
+//     while (number != 0)
+//     {
+//         int digit = number % 10;
+//         result = result * 10 + digit;
+//         number = number / 10;
+//     }
+//     if (result == copyNumber)
+//     {
+//         Console.WriteLine("Полиндром ");
+//     }
+//     else
+//     {
+//         Console.WriteLine("Не полиндром ");
+//     }
+// }
+// Revers(numberPOlendrom);
+
+// //  Задание № 3 
+// Console.WriteLine("Введите число для подчета кубов ");
+// int min = Convert.ToInt32(Console.ReadLine());
+
+// void Cub(int num)
+// {
+//     int sum = 0;
+//     for (int i = 1; i <= num; i++)
+//     {
+//         sum = i * i * i;
+//         Console.Write($"{sum} ");
+//     }
+// }
+// Cub(min);
+// // Задание 2 
+// //Напишите метод, который принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+
+// double[][] Dablarr()
+// {
+//     double[][] mix = new double[2][];
+//     mix[0] = new double[3];
+//     mix[1] = new double[3];
+//     int length = mix[0].Length;
+//     for (int i = 0; i < length; i++)
+//     {
+//         Console.WriteLine("Введите координаты точки А");
+//         mix[0][i] = Convert.ToInt32(Console.ReadLine());
+//     }
+//     for (int i = 0; i < length; i++)
+//     {
+//         Console.WriteLine("Введите координаты точки В");
+//         mix[1][i] = Convert.ToInt32(Console.ReadLine());
+//     }
+//     return mix;
+// };
+
+// double[][] arrT = Dablarr();
+
+
+// void Function(double[][] arr)
+// {
+//     double sum = Math.Sqrt(Math.Pow(arr[1][0] - arr[0][0], 2) + Math.Pow(arr[1][1] - arr[0][1], 2) + Math.Pow(arr[1][2] - arr[0][2], 2));
+
+//     Console.WriteLine(sum.ToString("F" + 2));
+// }
+// Function(arrT);
+
+
+
+
+
+
+//____________________________________________________________________________________________________
+//Урок 5
+// Сщздать массив ;
+// заполнить массив 
+// Вывести массив 
+// Вывести сколько эллементов находится в массиве  в диапазоне от 50 до 66
+
+// int [] Create ( int letngth){
+//     return new int [letngth];
+// }
+
+// void FillArray (int [] array, int min , int max){
+//     int length = array.Length;
+//     for (int i = 0; i < length; i++)
+//     {
+//         array[i]= new Random().Next(min, max);
+//     }
+// }
+
+// string OutputArray (int [] array){
+//     return "[" + String.Join(' ',array) + "]";
+// }
+
+// void Amount ( int [] array, int min , int max  ){
+//     int length = array.Length;
+//     int count = 0;
+//     for (int i = 0; i < length; i++)
+//     {
+//         if(array[i]>= min && array[i]<= max){
+//             count++;
+//         }
+//     }
+//     Console.Write(count);
+// }
+// int [] array = Create(12);
+// FillArray(array, 10, 99 );
+// Console.WriteLine(OutputArray(array));
+// Amount(array, 40 , 55 );
+
+
+// ЗАдайте одомерный   массив , заполните случайными числами , Найдите сумму эллементов стоящих на нечетных позицыях
+
+// int [] Create ( int length){
+//     return new int[length];
+// }
+// void FillArray ( int [] array, int min, int max ){
+//     int length = array.Length;
+//     for (int i = 0; i < length; i++)
+//     {
+//         array[i] = new Random().Next(min,max);
+//     }
+// }
+// string OutputArray(int [] array){
+//     return "{" + String.Join(' ', array) + "}";
+// }
+
+// void SumArrayElement ( int [] array){
+//     int length = array.Length;
+//     int sum  = 0 ;
+//     for (int i = 0; i < length; i++)
+//     {
+//         if(i % 2 > 0){
+//             sum = sum + array[i-1];
+
+//         }
+//     }
+//     Console.WriteLine(sum);
+// }
+// int [] array = Create(10);
+// FillArray(array, 1, 10);
+// Console.WriteLine(OutputArray(array));
+// SumArrayElement(array);
+//Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+
+int[] LengthArray(int numberLength)
 {
-    int copyNumber = number;
-    int result = 0;
-    while (number != 0)
-    {
-        int digit = number % 10;
-        result = result * 10 + digit;
-        number = number / 10;
-    }
-    if (result == copyNumber)
-    {
-        Console.WriteLine("Полиндром ");
-    }
-    else
-    {
-        Console.WriteLine("Не полиндром ");
-    }
+    return new int[numberLength];
 }
-Revers(numberPOlendrom);
-
-//  Задание № 3 
-Console.WriteLine("Введите число для подчета кубов ");
-int min = Convert.ToInt32(Console.ReadLine());
-
-void Cub(int num)
+void FillArray(int[] array)
 {
-    int sum = 0;
-    for (int i = 1; i <= num; i++)
-    {
-        sum = i * i * i;
-        Console.Write($"{sum} ");
-    }
-}
-Cub(min);
-// Задание 2 
-//Напишите метод, который принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-
-double[][] Dablarr()
-{
-    double[][] mix = new double[2][];
-    mix[0] = new double[3];
-    mix[1] = new double[3];
-    int length = mix[0].Length;
+    int length = array.Length;
     for (int i = 0; i < length; i++)
     {
-        Console.WriteLine("Введите координаты точки А");
-        mix[0][i] = Convert.ToInt32(Console.ReadLine());
+        array[i] = new Random().Next(10, 20);
     }
-    for (int i = 0; i < length; i++)
-    {
-        Console.WriteLine("Введите координаты точки В");
-        mix[1][i] = Convert.ToInt32(Console.ReadLine());
-    }
-    return mix;
+    Console.WriteLine(String.Join(',', array));
 };
-
-double[][] arrT = Dablarr();
-
-
-void Function(double[][] arr)
+void Difference(int[] array)
 {
-    double sum = Math.Sqrt(Math.Pow(arr[1][0] - arr[0][0], 2) + Math.Pow(arr[1][1] - arr[0][1], 2) + Math.Pow(arr[1][2] - arr[0][2], 2));
+    int min = array.Min();
+    int max = array.Max();
+    int raz = max - min;
+    Console.WriteLine(raz);
 
-    Console.WriteLine(sum.ToString("F" + 2));
 }
-Function(arrT);
+int[] array = LengthArray(10);
+FillArray(array);
+Difference(array);
