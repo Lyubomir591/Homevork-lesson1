@@ -264,27 +264,142 @@
 // SumArrayElement(array);
 //Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 
-int[] LengthArray(int numberLength)
+// int[] LengthArray(int numberLength)
+// {
+//     return new int[numberLength];
+// }
+// void FillArray(int[] array)
+// {
+//     int length = array.Length;
+//     for (int i = 0; i < length; i++)
+//     {
+//         array[i] = new Random().Next(10, 20);
+//     }
+//     Console.WriteLine(String.Join(',', array));
+// };
+// void Difference(int[] array)
+// {
+//     int min = array.Min();
+//     int max = array.Max();
+//     int raz = max - min;
+//     Console.WriteLine(raz);
+
+// }
+// int[] array = LengthArray(10);
+// FillArray(array);
+// Difference(array);
+//___________________________________________________________________________________
+//_______________________________________Урок4_______________________________________
+//Shop
+int[,] Random(int length, int enterVisiterTime, int exitVisiterTime)
 {
-    return new int[numberLength];
+    int[,] arr = new int[2, length];
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < length; j++)
+        {
+            arr[i, j] = new Random().Next(enterVisiterTime, exitVisiterTime + 1);
+
+        }
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < length; j++)
+        {
+            if (arr[0, j] > arr[1, j])
+            {
+                int temp = arr[0, j];
+                arr[0, j] = arr[1, j];
+                arr[1, j] = temp;
+            }
+            else if (arr[0, j] == arr[1, j])
+            {
+                arr[1, j] = arr[1, j]++;
+            }
+        }
+    }
+    return arr;
 }
-void FillArray(int[] array)
+void OutputArray(int[,] array)
 {
-    int length = array.Length;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+int[] HourInterval(int column, int[,] arr)
+{
+    int leftEdge = arr[0, column];
+    int rightEdge = arr[1, column];
+    int length = rightEdge - leftEdge;
+    int[] result = new int[length];
     for (int i = 0; i < length; i++)
     {
-        array[i] = new Random().Next(10, 20);
+        result[i] = leftEdge;
+        leftEdge++;
     }
-    Console.WriteLine(String.Join(',', array));
-};
-void Difference(int[] array)
-{
-    int min = array.Min();
-    int max = array.Max();
-    int raz = max - min;
-    Console.WriteLine(raz);
-
+    return result;
 }
-int[] array = LengthArray(10);
-FillArray(array);
-Difference(array);
+int[,] HoursMatrixAllCustomers(int customersTotal, int openingHour, int closingHour, int[,] inputArray)
+{
+    int[,] customersMatrix = new int[customersTotal, closingHour - openingHour + 1];
+    for (int i = 0; i < customersMatrix.GetLength(0); i++)
+    {
+        int[] arrToFill = HourInterval(i, inputArray);
+        for (int j = 0; j < arrToFill.Length; j++)
+        {
+            customersMatrix[i, arrToFill[j] - 8] = 1;
+        }
+    }
+    return customersMatrix;
+}
+
+// вычисляем сумму единиц в каждом столбце
+int SumInColumn(int column, int[,] matrix)
+{
+    int sum = 0;
+    for (int j = 0; j < matrix.GetLength(0); j++)
+    {
+        sum = sum + matrix[j, column];
+    }
+    return sum;
+}
+
+// вычисляем часы, в которые в магазине находилось наибольшее количество посетителей
+void MaxFilledHours(int[,] matrix)
+{
+    int[] sumVector = new int[matrix.GetLength(1)];
+    for (int i = 0; i < matrix.GetLength(1); i++)
+    {
+        sumVector[i] = SumInColumn(i, matrix);
+    }
+    int max = 0;
+    for (int j = 0; j < sumVector.Length; j++) // находим максимальное число посетителей
+    {
+        if (sumVector[j] > max)
+        {
+            max = sumVector[j];
+        }
+    }
+    for (int j = 0; j < sumVector.Length; j++) // повторяем цикл, чтобы найти все часы работы, в которые было достигнуто пиковое число посетителей
+    {
+        if (sumVector[j] >= max)
+        {
+            Console.WriteLine($"{j + 8}-{j + 9} => {max} человек");
+        }
+    }
+}
+int numberOfCustomers = 20;
+int openingHour = 8;
+int closingHour = 20;
+Console.WriteLine();
+
+
+int[,] random = Random(numberOfCustomers, openingHour, closingHour);
+OutputArray(random);
+int[,] testCustomerMatrix = HoursMatrixAllCustomers(numberOfCustomers, openingHour, closingHour, random);
+MaxFilledHours(testCustomerMatrix);
